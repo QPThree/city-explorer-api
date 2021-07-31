@@ -1,5 +1,11 @@
 # city-explorer-api
 
+## Author: Quentin P Young III
+
+## Technologies
+
+[Express](https://expressjs.com/)
+
 ### Feature 1: Set up
 
 Estimate of time needed to complete: 15min
