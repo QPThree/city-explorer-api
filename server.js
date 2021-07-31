@@ -23,12 +23,31 @@ app.get('/', (request, response) => {
 
 //weather data will route here
 app.get('/weather', (request, response) => {
-  response.send('Weather data here');
   console.log(weatherData);
+  let forecastArr = [];
+  let cityName = request.query.searchQuery;
+  let lat = request.query.lat;
+  let lon = request.query.lon;
+  
+  weatherData.filter(obj => {
+    if (obj.city_name.includes(cityName)){
+      console.log(obj.data[0].datetime);
+      forecastArr.push(new Forecast(obj.data));
+    }
+  });
+  response.send(forecastArr);
 });
 
 app.get('/*', (request, response) => {
   response.status(404).send('Something went wrong!');
 });
 //need to tellserver wehre to listen!
-app.listen(PORT, ()=> console.log(`listening on port ${PORT}`));
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+
+class Forecast {
+  constructor(data) {
+    this.threeDayDates = data.map(day => day.datetime);
+    this.threeDayDescirption = data.map(day => day.weather.description);
+  }
+}
