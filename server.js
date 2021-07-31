@@ -4,9 +4,13 @@ console.log('Got Pats, from our Server!');
 
 //require is essential an import
 const express = require('express');
+require('dotenv').config();
 
 //express must be called to be used as per docs
 const app = express();
+
+//hard wired port from .env
+const PORT = process.env.PORT;
 
 //weather data
 const weatherData = require('./data/weather.json');
@@ -27,4 +31,4 @@ app.get('/*', (request, response) => {
   response.status(404).send('Something went wrong!');
 });
 //need to tellserver wehre to listen!
-app.listen(3001, ()=> console.log('listening on port 3001'));
+app.listen(PORT, ()=> console.log(`listening on port ${PORT}`));
