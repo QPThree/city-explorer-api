@@ -29,19 +29,19 @@ app.get('/', (request, response) => {
 app.get('/weather', (request, response) => {
   let forecastArr = [];
   let cityName = request.query.searchQuery;
-  let lat = request.query.lat;
-  let lon = request.query.lon;
-  try {
-    weatherData.find(obj => {
-      if (obj.city_name === cityName) {
-        console.log(obj.data[0].datetime);
-        forecastArr.push(new Forecast(obj.data));
-      }
-    });
+  weatherData.find(obj => {
+    if (obj.city_name === cityName) {
+      console.log(obj.data[0].datetime);
+      forecastArr.push(new Forecast(obj.data));
+    }
+  });
+  if (forecastArr.length > 0){
     response.send(forecastArr);
-  } catch (error) {
-    response.send('Cannot Find City');
   }
+  else{
+    response.status(404).send('Something Went Wrong');
+  }
+
 });
 
 app.get('/*', (request, response) => {
