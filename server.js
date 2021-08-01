@@ -39,7 +39,7 @@ app.get('/weather', (request, response) => {
     response.send(forecastArr);
   }
   else{
-    response.status(404).send('Something Went Wrong');
+    response.status(500).send('Something Went Wrong');
   }
 
 });
