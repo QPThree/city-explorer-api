@@ -9,6 +9,10 @@ require('dotenv').config();
 //express must be called to be used as per docs
 const app = express();
 
+//cors for front end to talk to back end!
+const cors = require('cors');
+app.use(cors());
+
 //hard wired port from .env
 const PORT = process.env.PORT;
 
@@ -23,19 +27,21 @@ app.get('/', (request, response) => {
 
 //weather data will route here
 app.get('/weather', (request, response) => {
-  console.log(weatherData);
   let forecastArr = [];
   let cityName = request.query.searchQuery;
-  let lat = request.query.lat;
-  let lon = request.query.lon;
-  
-  weatherData.filter(obj => {
-    if (obj.city_name.includes(cityName)){
+  weatherData.find(obj => {
+    if (obj.city_name === cityName) {
       console.log(obj.data[0].datetime);
       forecastArr.push(new Forecast(obj.data));
     }
   });
-  response.send(forecastArr);
+  if (forecastArr.length > 0){
+    response.send(forecastArr);
+  }
+  else{
+    response.status(500).send('Something Went Wrong');
+  }
+
 });
 
 app.get('/*', (request, response) => {
@@ -44,10 +50,10 @@ app.get('/*', (request, response) => {
 //need to tellserver wehre to listen!
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
-
+//forecast object has 2 arrays, one for dates and the other for their corresponding weather report
 class Forecast {
   constructor(data) {
     this.threeDayDates = data.map(day => day.datetime);
-    this.threeDayDescirption = data.map(day => day.weather.description);
+    this.threeDayDescription = data.map(day => day.weather.description);
   }
 }
