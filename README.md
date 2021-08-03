@@ -20,7 +20,7 @@ V1.0 implements data from a JSON file. As such, search is limited for the weathe
 
 ## Design
 
-![UML('./img/uml.jpg')]
+![UML]('./img/uml.jpg')
 
 ### Feature 1: Set up
 
