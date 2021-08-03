@@ -18,6 +18,10 @@ V1.0 implements data from a JSON file. As such, search is limited for the weathe
 
 [node.js](https://nodejs.org/en/)
 
+## Design
+
+![UML('./img/uml.jpg)]
+
 ### Feature 1: Set up
 
 Estimate of time needed to complete: 15min
