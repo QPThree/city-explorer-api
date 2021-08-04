@@ -16,8 +16,8 @@ app.use(cors());
 //hard wired port from .env
 const PORT = process.env.PORT;
 
-//weather data
-const weatherData = require('./data/weather.json');
+let axios = require('axios');
+
 
 //specify routes our server should be listening for
 //this is a send so it is displayed on browser! (console.logs are displayer in console and terminal)
@@ -26,21 +26,26 @@ app.get('/', (request, response) => {
 });
 
 //weather data will route here
-app.get('/weather', (request, response) => {
+app.get('/weather', async (request, response) => {
   let forecastArr = [];
   let cityName = request.query.searchQuery;
-  weatherData.find(obj => {
-    if (obj.city_name === cityName) {
-      console.log(obj.data[0].datetime);
-      forecastArr.push(new Forecast(obj.data));
-    }
-  });
-  if (forecastArr.length > 0){
-    response.send(forecastArr);
-  }
-  else{
-    response.status(500).send('Something Went Wrong');
-  }
+  let lat = request.query.lat;
+  let lon = request.query.lon;
+  //call to weather api
+  const weatherData = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?city=${cityName}&key=${process.env.WEATHER_API_KEY}`);
+
+  console.log(weatherData.data.data);
+
+  // weatherData.data.find(obj => {
+  //   if (obj.city_name === cityName) {
+  //     forecastArr.push(new Forecast(obj.data));
+  //   }
+  // });
+  forecastArr.push(new Forecast(weatherData.data.data));
+  console.log('sent');
+  response.send(forecastArr);
+
+
 
 });
 
@@ -53,6 +58,7 @@ app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 //forecast object has 2 arrays, one for dates and the other for their corresponding weather report
 class Forecast {
   constructor(data) {
+    console.log('new forecast');
     this.threeDayDates = data.map(day => day.datetime);
     this.threeDayDescription = data.map(day => day.weather.description);
   }

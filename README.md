@@ -22,6 +22,10 @@ V1.0 implements data from a JSON file. As such, search is limited for the weathe
 
 ![UML](./img/uml.jpg)
 
+
+![UML](./img/uml.jpg)
+With Movie and Weather API
+
 ### Feature 1: Set up
 
 Estimate of time needed to complete: 15min
