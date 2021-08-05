@@ -18,7 +18,7 @@ const PORT = process.env.PORT;
 
 let axios = require('axios');
 
-
+//----GET REQUESTS-----
 //specify routes our server should be listening for
 //this is a send so it is displayed on browser! (console.logs are displayer in console and terminal)
 app.get('/', (request, response) => {
@@ -27,28 +27,32 @@ app.get('/', (request, response) => {
 
 //weather data will route here
 app.get('/weather', async (request, response) => {
-  let forecastArr = [];
+  try{
+    let forecastArr = [];
   let cityName = request.query.searchQuery;
   let lat = request.query.lat;
   let lon = request.query.lon;
   //call to weather api
   const weatherData = await axios.get(`https://api.weatherbit.io/v2.0/forecast/daily?city=${cityName}&key=${process.env.WEATHER_API_KEY}`);
 
-  console.log(weatherData.data.data);
-
-  // weatherData.data.find(obj => {
-  //   if (obj.city_name === cityName) {
-  //     forecastArr.push(new Forecast(obj.data));
-  //   }
-  // });
   forecastArr.push(new Forecast(weatherData.data.data));
-  console.log('sent');
   response.send(forecastArr);
-
-
-
+  } catch (error){
+    response.status(404).send('Something went wrong with the weather data!');
+  }
 });
 
+app.get('/movies', async (request, response) => {
+  try{
+    let cityName = request.query.searchQuery;
+    const movieData = await axios.get(`https://api.themoviedb.org/3/search/movie?uery=${cityName}&api_key=${process.env.MOVIE_API_KEY}&language=en-US&page=1&include_adult=false`);
+    //movie stuff here
+    console.log(movieData.data.results[0].original_title);
+    response.send(movieData.data.results);
+  }catch(error){
+    response.status(404).send('Something went wrong with the movie data!');
+  }
+});
 app.get('/*', (request, response) => {
   response.status(404).send('Something went wrong!');
 });

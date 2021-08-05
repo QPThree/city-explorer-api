@@ -55,3 +55,14 @@ Start time: 11:00am 01AUG2021
 Finish time: 12:30pm 01AUG2021
 
 Actual time needed to complete: 90min
+
+
+### Feature 4:Get movies about City Searched
+
+Estimate of time needed to complete: 120min
+
+Start time: 6:50pm 04AUG2021
+
+Finish time:
+
+Actual time needed to complete: 
