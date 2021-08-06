@@ -4,7 +4,14 @@
 
 ## Versions
 
-### 1.0.0 - 01AUG2021
+### 2.0.0 - 06AUG2021
+
+Server is now deployed to heroku. Weather and movie data are gathered from live API calls via ReSTful API's.
+
+---
+### Previous Versions
+
+1.0.0 01AUG2021
 
 V1.0 implements data from a JSON file. As such, search is limited for the weather feature. Future iterations will enable a much wider availability of search results as it pertains to weather data. Current searchable cities include Seattle, Paris, and Amman.
 
@@ -18,12 +25,18 @@ V1.0 implements data from a JSON file. As such, search is limited for the weathe
 
 [node.js](https://nodejs.org/en/)
 
+[Heroku](#)
+
+## Using .env
+
+A sample .env has been added to the repo. To use, add your own weather API and movie API keys directly after the "=". Those keys can then be accessed within your local files and used to make get necessary data. Movie API makes calls to *themoviedb.org*, while the weather API makes calls to *weatherbit.io*. Sign up may be required.
+
 ## Design
 
 ![UML](./img/uml.jpg)
 
 
-![UML](./img/uml.jpg)
+![UML](./img/uml2.png)
 With Movie and Weather API
 
 ### Feature 1: Set up
