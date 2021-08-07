@@ -4,12 +4,16 @@
 
 ## Versions
 
-### 2.0.0 - 06AUG2021
+### 2.1 - 07AUG2021
 
-Server is now deployed to heroku. Weather and movie data are gathered from live API calls via ReSTful API's.
+Weather and Movie gets are now modularized.
 
 ---
 ### Previous Versions
+
+2.0.0 06AUG2021
+
+Server is now deployed to heroku. Weather and movie data are gathered from live API calls via ReSTful API's.
 
 1.0.0 01AUG2021
 
@@ -80,3 +84,15 @@ Start time: 6:50pm 04AUG2021
 Finish time: 8:30pm 04AUG2021
 
 Actual time needed to complete: 100min
+
+### Feature 5: Modularize Codebase
+
+Estimate of time needed to complete: 60min
+
+Start time: 1:15pm 07AUG2021
+
+Finish time: 2:05 07AUG2021
+
+Actual time needed to complete:50min
+
+---

@@ -24,6 +24,9 @@ class Forecast {
   constructor(data) {
     this.threeDayDates = data.map(day => day.datetime);
     this.threeDayDescription = data.map(day => day.weather.description);
+    this.highs = data.map(day => day.high_temp);
+    this.lows = data.map(day => day.low_temp );
+    console.log(this.lows);
   }
 }
 
