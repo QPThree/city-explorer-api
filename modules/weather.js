@@ -19,7 +19,6 @@ function getWeather(lat, lon) {
     cache[key].data = axios.get(url)
       .then(response => parseWeather(response));
   }
-
   return cache[key].data;
 }
 
