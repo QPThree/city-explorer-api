@@ -4,12 +4,16 @@
 
 ## Versions
 
-### 2.1 - 07AUG2021
+### 3.0 - 11AUG2021
 
-Weather and Movie gets are now modularized.
+Restaurant data is now retieved from Yelp API
 
 ---
 ### Previous Versions
+
+2.1 - 07AUG2021
+
+Weather and Movie gets are now modularized.
 
 2.0.0 06AUG2021
 
@@ -42,6 +46,12 @@ A sample .env has been added to the repo. To use, add your own weather API and m
 
 ![UML](./img/uml2.png)
 With Movie and Weather API
+
+![UML](./img/uml.jpg)
+
+
+![UML](./img/umlwithcache.png)
+Data is now cached
 
 ### Feature 1: Set up
 
@@ -94,5 +104,16 @@ Start time: 1:15pm 07AUG2021
 Finish time: 2:05 07AUG2021
 
 Actual time needed to complete:50min
+
+---
+### Feature 6: Added Yelp endpoint
+
+Estimate of time needed to complete: 60min
+
+Start time: 6:40pm 11AUG2021
+
+Finish time: 7:30pm 11AUG2021
+
+Actual time needed to complete: 50min
 
 ---
