@@ -96,3 +96,14 @@ Finish time: 2:05 07AUG2021
 Actual time needed to complete:50min
 
 ---
+### Feature 6: Added Yelp endpoint
+
+Estimate of time needed to complete: 60min
+
+Start time: 6:40pm 11AUG2021
+
+Finish time: 7:30pm 11AUG2021
+
+Actual time needed to complete: 50min
+
+---
