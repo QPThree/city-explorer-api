@@ -5,10 +5,19 @@ const express = require('express');
 const cors = require('cors');
 
 const weather = require('./modules/weather.js');
+const Movies = require('./modules/movies.js');
 const app = express();
 app.use(cors()); //had to add this
 
+
+//---- GETS ----
+app.get('/', (request, response) => {
+  response.send('Hello again from the server response.send!');
+});
+
 app.get('/weather', weatherHandler);
+
+app.get('/movies', Movies);
 
 function weatherHandler(request, response) {
   // const { lat, lon } = request.query;
